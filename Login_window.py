@@ -45,33 +45,29 @@ class Login_window:
     def login_db(self):
         username = self.temp_username.get()
         password = self.temp_password.get()
-        print(username)
-        print(password)
 
         lower_bound = '180'
         if((" " in username) or (" " in password)):
-            print('Spaces are not allowed')
             self.login_window.geometry('450x{}'.format(str(lower_bound)))
             self.error_label.config(fg='red',text='Spaces are not allowed')
         elif(username == '' and password == ''):
-            print('1')
             self.login_window.geometry('450x{}'.format(str(lower_bound)))
             self.error_label.config(fg='red',text='Please enter a username and a password')
         elif(username == ''):
-            print('2')
             self.login_window.geometry('450x{}'.format(str(lower_bound)))
             self.error_label.config(fg='red',text='Please enter a username')
         elif(password == ''):
-            print('3')
             self.login_window.geometry('450x{}'.format(str(lower_bound)))
             self.error_label.config(fg='red',text='Please enter a password')
-        elif(Bank_system().check_user(username, password)):        
-            print('4')        
+        elif(Bank_system().check_user(username, password)):             
             self.remove_login_GUI()
             self.close()
             account_id = Bank_system().get_account_id(username, password)
-            print(account_id)
             User_window().start_user_window(self.tmp_home_screen, account_id, username)
+        else:
+            self.login_window.geometry('450x{}'.format(str(lower_bound)))
+            self.error_label.config(fg='red',text='Incorrect username or password')
+
     
     def close(self):
         self.login_window.destroy()
