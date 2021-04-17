@@ -6,9 +6,7 @@ class Assets_window:
         self.home_screen = home_screen
         self.account_id = account_id
         self.username = username
-        self.update_assets_window()
-
-    def update_assets_window(self):
+    
         self.assets_window = Toplevel(self.home_screen)
         self.assets_window.geometry('300x110')
         self.assets_window.title('Assets [{}]'.format(self.username))
@@ -22,7 +20,7 @@ class Assets_window:
         go_back_button = Button(self.assets_window, text='Go back', font=('Calibri', 16), width=10,command=lambda: self.assets_window.destroy())
         go_back_button.grid(row=1, column=0, sticky='W', padx=5)
 
-        update_button = Button(self.assets_window, text='Update', font=('Calibri', 16), width=10,command=lambda: self.update_assets())
+        update_button = Button(self.assets_window, text='Update', font=('Calibri', 16), width=10,command=lambda: self.update_assets2())
         update_button.grid(row=1, column=0, sticky='E', pady=5)
 
     def get_assets(self):
@@ -32,4 +30,8 @@ class Assets_window:
     def update_assets(self):
         self.assets_window.destroy()
         self.start_assets_window(self.home_screen, self.account_id, self.username)
+    
+    def update_assets2(self):
+        assets = self.get_assets()
+        self.details_label.config(text='Your assets are: {}.00$'.format(assets), font=('Calibri',20))
 

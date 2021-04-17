@@ -6,7 +6,7 @@ class Transfer_window:
     def start_transfer_window(self, home_screen, account_id, username):
         self.account_id = account_id
         self.transfer_window = Toplevel(home_screen)
-        self.transfer_window.geometry('500x180')
+        self.transfer_window.geometry('480x160')
         self.transfer_window.title('Transfer [{}]'.format(username))
 
         self.temp_username = StringVar()
@@ -57,13 +57,13 @@ class Transfer_window:
         Bank_system().transfer_assets(self.account_id, target_id, amount)
         self.username_entry.delete(0, 'end')
         self.amount_entry.delete(0, 'end')
-        self.transfer_window.geometry('500x200')
+        self.transfer_window.geometry('480x160')
         self.error_label.config(fg='green',text='The transfer was successfully made')
         #Note to self, add function to check if the deposit was succesful
     
     def check_user_input(self, username, amount):
-        lower_bound = '200'
-        horozontal_bound = '500'
+        lower_bound = '180'
+        horozontal_bound = '480'
         if((" " in username) or (" " in amount)):
             print('Spaces are not allowed')
             self.transfer_window.geometry('{}x{}'.format(horozontal_bound, lower_bound))

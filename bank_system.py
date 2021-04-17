@@ -136,6 +136,17 @@ class Bank_system:
         mycursor.close()
         mydb.close()
     
+    def delete_account(self, account_id):
+        mydb = mysql.connector.connect(host="localhost", user="root", passwd="root")
+        mycursor = mydb.cursor()
+        query = "DELETE FROM bank_accounts.accounts WHERE id_accounts = {};".format(account_id)
+        mycursor.execute(query)
+        mydb.commit()
+
+        mycursor.close()
+        mydb.close()
+
+    
     def get_assets(self, account_id):
         #account_id = self.get_target_account_id(username)
 
