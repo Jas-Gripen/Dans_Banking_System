@@ -1,3 +1,6 @@
+# Class: User_window
+# Description: Pop-up window for the user home window
+# Author: Daniel Gripenstedt  
 from tkinter import Toplevel, Label, Button, Entry, StringVar
 from bank_system import Bank_system
 from Assets_window import Assets_window
@@ -5,6 +8,7 @@ from Deposit_window import Deposit_window
 from Withdraw_window import Withdraw_window
 from Transfer_window import Transfer_window
 class User_window:
+    # Build the user window with all of the labels and buttons
     def start_user_window(self, home_screen, account_id, username, password):
         self.account_id = account_id
         self.first_username = username
@@ -43,23 +47,29 @@ class User_window:
         self.logout_button = Button(self.user_window, text='Logout', font=('Calibri', 12), width=12,command=lambda: self.user_window.destroy())
         self.logout_button.grid(row=6, column=0, sticky='N', padx=5)
 
+    # Start deposit window
     def deposit(self):
         Deposit_window().start_deposit_window(self.home_window, self.account_id, self.first_username)
     
+    # Start withdraw window
     def withdraw(self):
         Withdraw_window().start_withdraw_window(self.home_window, self.account_id, self.first_username)
     
+    # Start transfer window
     def transfer(self):
         Transfer_window().start_transfer_window(self.home_window, self.account_id, self.first_username)
     
+    # Start assets window
     def view_assets(self, home_screen):
         Assets_window().start_assets_window(home_screen, self.account_id, self.first_username)
     
+    # Start to rebuild the user window as a "delete account window"
     def start_delete_account(self):
         self.remove_stuff()
         self.setup_delete_stuff()
         self.finish_delete_account()
     
+    # Build the delete account window
     def setup_delete_stuff(self):
         self.user_window.geometry('450x160')
         #Temp varibles
@@ -94,6 +104,7 @@ class User_window:
         self.cancel_button = Button(self.user_window, text='Cancel', font=('Calibri', 12), width=12,command=lambda: self.cancel())
         self.cancel_button.grid(row=3, column=0, sticky='W', padx=5)
     
+    # Check if user input is valid and delete the account
     def finish_delete_account(self):
         username = self.temp_username.get()
         password = self.temp_password.get()
@@ -101,11 +112,12 @@ class User_window:
             Bank_system().delete_account(self.account_id)
             self.user_window.destroy()
 
-    
+    # Cancel the deletion of the account and rebuild the the user home window
     def cancel(self):
         self.user_window.destroy()
         self.start_user_window(self.home_window, self.account_id, self.first_username, self.first_password)
 
+    # Remove all of the stuff in the user window
     def remove_stuff(self):
         self.deposit_button.destroy()
         self.withdraw_button.destroy()
@@ -116,6 +128,7 @@ class User_window:
         self.assets_label.destroy()
         self.delete_account_button.destroy()
     
+    # Check if user input is valied and give warning if it is not
     def check_user_input(self, username, password):
         lower_bound = '180'
         horozontal_bound = '480'

@@ -1,8 +1,12 @@
+# Class: Transfer_window
+# Description: Pop-up window for transfering assets to another account
+# Author: Daniel Gripenstedt  
 from tkinter import Toplevel, StringVar, Label, Button, Entry 
 from bank_system import Bank_system
 from Assets_window import Assets_window
 
 class Transfer_window:
+    #Build transfer window
     def start_transfer_window(self, home_screen, account_id, username):
         self.account_id = account_id
         self.transfer_window = Toplevel(home_screen)
