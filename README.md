@@ -23,4 +23,4 @@ To better understand how to use and implement Python with MySQL.
 - Deploy the database on the cloud
 - Figure out the safest way of connecting to the database
 - Conduct a threat analysis of the code
-- Try to hack the program and steel user credentials
+- Try to hack the program and steal user credentials
