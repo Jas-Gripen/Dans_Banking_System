@@ -1,5 +1,5 @@
 # Dans_Banking_System
-Simple banking system where userinformation is stored on a database utalizing MySQL.
+This is a simple banking system where the userinformation is stored on a database which is utalizing MySQL.
 
 ## Goal of this project
 To better understand how to use and implement Python with MySQL.
