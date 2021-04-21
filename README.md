@@ -1,5 +1,5 @@
 # Dans_Banking_System
-This is a simple banking system where the userinformation is stored on a database which is utalizing MySQL.
+This is a simple banking system where the userinformation is stored on a database which is utalizing MySQL. The GUI was created using the python library tkinter and the database is handled with MySQL. To run the code you need a database in MySQL name "root" with the password "root". The database should have the columns: id_accounts, username, password, assets.
 
 ## Goal of this project
 To better understand how to use and implement Python with MySQL.
